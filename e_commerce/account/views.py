@@ -23,14 +23,12 @@ class LogView(FormView):
         if form_data.is_valid():
             un=form_data.cleaned_data.get("username")
             pw=form_data.cleaned_data.get("password")
-            ut=form_data.cleaned_data.get("usertype")
-            user=authenticate(request,username=un,password=pw,usertype=ut)
+            user=authenticate(request,username=un,password=pw)
             if user:
-                if ut=="Store":
-                    login(request,user)
+                login(request,user)
+                if request.user.usertype=="Store":
                     return redirect('sh')
                 else:
-                    login(request,user)
                     return redirect("ch")
             else:
                 return render(request,'log.html',{"form":form_data})

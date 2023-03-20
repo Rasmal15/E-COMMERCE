@@ -22,10 +22,10 @@ class RegForm(UserCreationForm):
 class LogForm(forms.Form):
     username=forms.CharField(max_length=100)
     password=forms.CharField(max_length=100)
-    options=(
-        ("Store","Store"),
-        ("Customer","Customer"),
-    )
-    usertype=forms.ChoiceField(choices=options)
+    # options=(
+    #     ("Store","Store"),
+    #     ("Customer","Customer"),
+    # )
+    # usertype=forms.ChoiceField(choices=options)
 
     
