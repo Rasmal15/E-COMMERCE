@@ -3,7 +3,7 @@ from django.views.generic import View,TemplateView,CreateView,FormView
 from .forms import *
 from .models import *
 from django.urls import reverse_lazy
-from django.contrib.auth import authenticate,login
+from django.contrib.auth import authenticate,login,logout
 
 # Create your views here.
 class Home(TemplateView):
@@ -34,3 +34,8 @@ class LogView(FormView):
                 return render(request,'log.html',{"form":form_data})
         else:
             return render(request,'log.html',{"form":form_data})
+
+class LogOut(View):
+    def get(self,req):
+        logout(req)
+        return redirect('log')
