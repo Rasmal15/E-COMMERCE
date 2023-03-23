@@ -1,9 +1,11 @@
 {% extends 'nav.html' %}
 {% block nav %}
-    <div class="col-3">
+    <div class="row">
       {% for i in data %}
+      <div class="col-md-3 ml-1"> 
+      
       <div class="card mt-2" style="width: 18rem;">
-      <img class="card-img-top" src="{{i.Mobile.url}}" alt="Card image cap">
+      <img class="card-img-top" height="180px" src="{{i.Mobile.url}}" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">{{i.Name}}</h5>
         <h6 class="card-text"><span class="material-symbols-rounded">
@@ -11,7 +13,8 @@
           </span>{{i.prize}}</h6>
       </div>
     </div>
-    {% endfor %}
+    
   </div>
-
+  {% endfor %}
+  </div>
 {% endblock %}
