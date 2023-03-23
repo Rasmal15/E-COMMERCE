@@ -25,3 +25,10 @@ def addcart(request,*args,**kwargs):
     user=request.user
     Cart.objects.create(mobile=mobile,user=user)
     return redirect('ch')
+
+class MyCart(TemplateView):
+    template_name='mycart.html'
+    def get_context_data(self, **kwargs):
+        context=super().get_context_data(**kwargs)
+        context["data"]=Cart.objects.filter(user=self.request.user)
+        return context
