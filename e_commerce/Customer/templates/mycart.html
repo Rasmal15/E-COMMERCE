@@ -14,7 +14,11 @@
           </span>{{i.mobile.prize}}</h6>
       </div>
       <div class="footer">
-        <a href="{% url 'pro' i.mobile.id %}" class="btn btn-block btn-primary mb-1 ml-1">More Detailes</a>
+        {% if i.status == "purchased" %}
+        <a href="{% url 'pro' i.mobile.id %}" class="btn btn-block btn-danger">Purchased</a>
+        {% else %}
+        <a href="{% url 'pro' i.mobile.id %}" class="btn btn-block btn-primary">More Detailes</a>
+        {% endif %}
       </div>
     </div>
     

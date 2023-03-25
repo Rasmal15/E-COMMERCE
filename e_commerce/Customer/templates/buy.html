@@ -1,0 +1,38 @@
+{% extends 'navigation.html' %}
+{% block nav %}
+<div class="container">
+  <div class="row">
+      <div class="col-md-10">
+          <div class="card">
+              <img class="card-img-top" src="{{data.Mobile.url}}" alt="Card image cap">
+              <div class="card-body">
+                <h3 class="card-title">{{data.Name}}</h3>
+                <h6 class="card-text"><span class="material-symbols-rounded">
+                  currency_rupee
+                  </span>{{data.prize}}</h6>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">RAM:{{data.ram}}GB</li>
+                <li class="list-group-item">ROM:{{data.rom}}GB</li>
+                <li class="list-group-item">{{data.processer}} processor</li>
+              </ul>
+            </div>
+          <div class="footer">
+            <form action="{% url 'buyitem' data.id %}" method="post">
+              {% csrf_token %}
+              <table class="table">
+                {{form.as_table}}
+                <tr>
+                  <td>
+                    <button class="btn btn-danger">submit</button>
+                  </td>
+                </tr>
+              </table>
+              
+            </form>
+               
+          </div>
+      </div>
+  </div>
+  </div>
+{% endblock %}

@@ -6,4 +6,8 @@ urlpatterns=[
     path('mycart/',MyCart.as_view(),name='mycart'),
     path('pro/<int:pk>',ProductView.as_view(),name='pro'),
     path('addcart/<int:pid>',addcart,name='addcart'),
+    path('buyitem/<int:pid>',buyitem,name='buyitem'),
+    path('buy/<int:pid>',Buy.as_view(),name='buy'),
+    path('review/<int:pid>',addreview,name='addr'),
+
 ]
