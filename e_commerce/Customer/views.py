@@ -80,6 +80,9 @@ def buyitem(request,*args,**kwargs):
     return redirect('ch')
 
 
-
-
-    
+class Myorder(TemplateView):
+    template_name='myorders.html'
+    def get_context_data(self, **kwargs):
+        context=super().get_context_data(**kwargs)
+        context["data"]=Purchase.objects.filter(user=self.request.user)
+        return context
