@@ -10,5 +10,6 @@ urlpatterns=[
     path('buyitem/<int:pid>',buyitem,name='buyitem'),
     path('buy/<int:pid>',Buy.as_view(),name='buy'),
     path('review/<int:pid>',addreview,name='addr'),
+    path('delcart/<int:pid>',delcart,name='delcart'),
 
-]
+]   

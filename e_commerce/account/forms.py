@@ -10,7 +10,6 @@ class RegForm(UserCreationForm):
             "first_name",
             "last_name",
             "email",
-            "image",
             "address",
             "phone",
             "usertype",
@@ -18,14 +17,11 @@ class RegForm(UserCreationForm):
             "password1",
             "password2",
         ]
-
+        help_texts={
+            'username':None
+        }
 class LogForm(forms.Form):
-    username=forms.CharField(max_length=100)
-    password=forms.CharField(max_length=100)
-    # options=(
-    #     ("Store","Store"),
-    #     ("Customer","Customer"),
-    # )
-    # usertype=forms.ChoiceField(choices=options)
+    username=forms.CharField(max_length=100,widget=forms.TextInput(attrs={"class":"input-box","placeholder":"username"}))
+    password=forms.CharField(max_length=100,widget=forms.PasswordInput(attrs={"class":"input-box","placeholder":"password"}))
 
     

@@ -24,6 +24,7 @@ class ProductView(TemplateView):
         context["form"]=ReviewForm()
         context['review']=Review.objects.all()
         context['pst']=Purchase.objects.filter(user=self.request.user)
+        context["cdata"]=Cart.objects.filter(user=self.request.user)
         return context
 def addreview(request,*args,**kwargs):
     if request.method=="POST":
@@ -39,13 +40,12 @@ def addcart(request,*args,**kwargs):
     id=kwargs.get("pid")
     mobile=Products.objects.get(id=id)
     user=request.user
-    if Cart.objects.filter(status="carted"):
+    if Cart.objects.filter(mobile=mobile,status="carted",user=request.user):
         messages.success(request,"alredy carted")
         return redirect('ch')
     else:
         Cart.objects.create(mobile=mobile,user=user,status="carted")
         return redirect('ch')
-        
 
 
 class MyCart(TemplateView):
@@ -86,3 +86,9 @@ class Myorder(TemplateView):
         context=super().get_context_data(**kwargs)
         context["data"]=Purchase.objects.filter(user=self.request.user)
         return context
+
+def delcart(request,*args,**kwargs):
+    id=kwargs.get("pid")
+    user=request.user
+    Cart.objects.filter(id=id).delete()
+    return redirect('mycart')

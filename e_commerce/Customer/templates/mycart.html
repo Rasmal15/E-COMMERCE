@@ -17,6 +17,7 @@
         {% if i.status == "purchased" %}
         <a href="{% url 'pro' i.mobile.id %}" class="btn btn-block btn-danger">Purchased</a>
         {% else %}
+        <a href="{% url 'delcart' i.id %}" class="btn btn-danger btn-block">Remove from Cart</a>
         <a href="{% url 'pro' i.mobile.id %}" class="btn btn-block btn-primary">More Detailes</a>
         {% endif %}
       </div>

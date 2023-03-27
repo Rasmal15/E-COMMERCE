@@ -13,7 +13,7 @@ class RegView(CreateView):
     template_name='reg.html'
     form_class=RegForm
     model=CustUser
-    success_url=reverse_lazy('h')
+    success_url=reverse_lazy('log')
 
 class LogView(FormView):
     template_name='log.html'
